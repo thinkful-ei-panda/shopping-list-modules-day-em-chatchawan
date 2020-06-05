@@ -8,41 +8,41 @@ import item from './item.js';
 let items = [];
 let hideCheckedItems = false;
 
-function findById(ids) {
-  console.log(ids);
-  return items.find(items.ids);
-}
+const findById = function(id) {
+  return store.items.find(item => item.id === id);
+};
 
-function addItem(name) {
+const addItem = function(name) {
   try {
-    item.validateName[name];
+    item.validateName(name);
     const result = item.create(name);
     this.items.push(result);
   } catch (error) {
-    console.log('Cannot add item: ${error.message}');
+    console.log(`Cannot add item: ${error.message}`);
   }
-}
+};
 
-function findAndToggleChecked(id) {
-  let item = this.findById(id);
+const findAndToggleChecked = function(id) {
+  const result = findById(id);
   // toggle it's checked attribute?
-  item.checked = !item.checked;
-}
+  this.item.result.checked = !this.item.result.checked;
+};
 
-function findAndUpdateName(id, newName) {
+const findAndUpdateName = function(id, newName) {
   try {
-    item.validateName[name];
-    const item = this.findById(id);
-    item.name = newName;
+    item.validateName(newName);
+    const result = findById(id);
+    this.item.result.name = newName;
     // update it's name?
   } catch (error) {
-    console.log('Cannot update name: ${error.message}');
+    console.log(`Cannot update name: ${error.message}`);
   }
-}
+};
 
-function findAndDelete(id) {
-  findById(id).filter(this.items);
-}
+const findAndDelete = function(id) {
+  const index = this.items.findIndex(item => item.id === id);
+  this.items.splice(id, 1);
+};
 
 export default {
   items,
