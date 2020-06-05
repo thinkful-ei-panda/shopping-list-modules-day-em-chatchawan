@@ -1,8 +1,8 @@
-function validateName(name) {
+const validateName = function(name) {
   if(!name) {
-    throw TypeError('Name must not be blank');
+    throw new TypeError('Name must not be blank');
   }
-}
+};
 
 const create = function (name) {
   return {

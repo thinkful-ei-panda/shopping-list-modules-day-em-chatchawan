@@ -1,3 +1,5 @@
+// const foo = 'bar';
+
 // const store = {
 //   items: [],
 //   hideCheckedItems: false
@@ -5,7 +7,7 @@
 
 import item from './item.js';
 
-let items = [];
+const items = [];
 let hideCheckedItems = false;
 
 const findById = function(id) {
