@@ -39,15 +39,15 @@ const render = function () {
   $('.js-shopping-list').html(shoppingListItemsString);
 };
 
-const addItemToShoppingList = function (item) {
+const addItemToShoppingList = function (itemName) {
   // store.items.push({ id: cuid(), name: itemName, checked: false });
   try {
-    item.validateName;
-    newitem = item.create;
-    newItem.push(store.items);
+    item.validateName(itemName);
+    const result = item.create(itemName);
+    store.items.push(result);
     render();
-  } catch (error) {
-    console.log('Cannot add item: ${error.message}');
+  } catch(error) {
+    console.log(`Cannot add item: ${error.message}`);
   }
 };
 
@@ -70,6 +70,7 @@ const handleItemCheckClicked = function () {
   $('.js-shopping-list').on('click', '.js-item-toggle', event => {
     const id = getItemIdFromElement(event.currentTarget);
     toggleCheckedForListItem(id);
+    // store.findAndToggleChecked(id);
     render();
   });
 };
@@ -96,6 +97,7 @@ const handleDeleteItemClicked = function () {
     const id = getItemIdFromElement(event.currentTarget);
     // delete the item
     deleteListItem(id);
+    // store.findAndDelete(id);
     // render the updated shopping list
     render();
   });
@@ -130,6 +132,7 @@ const handleEditShoppingItemSubmit = function () {
     const id = getItemIdFromElement(event.currentTarget);
     const itemName = $(event.currentTarget).find('.shopping-item').val();
     editListItemName(id, itemName);
+    // store.findAndUpdateName(id, itemName);
     render();
   });
 };
