@@ -1,8 +1,3 @@
-const store = {
-  items: [],
-  hideCheckedItems: false
-};
-
 const generateItemElement = function (item) {
   let itemTitle = `<span class="shopping-item shopping-item__checked">${item.name}</span>`;
   if (!item.checked) {
@@ -44,8 +39,16 @@ const render = function () {
   $('.js-shopping-list').html(shoppingListItemsString);
 };
 
-const addItemToShoppingList = function (itemName) {
-  store.items.push({ id: cuid(), name: itemName, checked: false });
+const addItemToShoppingList = function (item) {
+  // store.items.push({ id: cuid(), name: itemName, checked: false });
+  try {
+    item.validateName;
+    newitem = item.create;
+    newItem.push(store.items);
+    render();
+  } catch (error) {
+    console.log('Cannot add item: ${error.message}');
+  }
 };
 
 const handleNewItemSubmit = function () {
@@ -144,3 +147,6 @@ export default {
   render,
   bindEventListeners
 };
+
+import store from './store.js';
+import item from './item.js';
