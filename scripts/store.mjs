@@ -5,13 +5,14 @@
 //   hideCheckedItems: false
 // };
 
-import item from './item.js';
+import item from './item.mjs';
 
 const items = [];
 let hideCheckedItems = false;
 
 const findById = function(id) {
-  return store.items.find(item => item.id === id);
+  console.log(items)
+  return store.items.find(item => item.id === id); //why does this still reference store? It's undefined.
 };
 
 const addItem = function(name) {
@@ -46,6 +47,10 @@ const findAndDelete = function(id) {
   this.items.splice(id, 1);
 };
 
+const toggleCheckedFilter = function(ids) {
+  ids.checked = !ids.checked; // I don't think this is right yet
+}
+
 export default {
   items,
   hideCheckedItems,
@@ -53,5 +58,6 @@ export default {
   addItem,
   findAndToggleChecked,
   findAndUpdateName,
-  findAndDelete
+  findAndDelete,
+  toggleCheckedFilter
 };

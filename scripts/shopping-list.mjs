@@ -1,5 +1,5 @@
-import store from './store.js';
-import item from './item.js';
+import store from './store.mjs';
+import item from './item.mjs';
 
 const generateItemElement = function (item) {
   let itemTitle = `<span class="shopping-item shopping-item__checked">${item.name}</span>`;
@@ -124,7 +124,7 @@ const handleDeleteItemClicked = function () {
  */
 const handleToggleFilterClick = function () {
   $('.js-filter-checked').click(() => {
-    toggleCheckedItemsFilter();
+    store.toggleCheckedFilter(); //this is calling the functin above that we were supposed to remove
     render();
   });
 };
