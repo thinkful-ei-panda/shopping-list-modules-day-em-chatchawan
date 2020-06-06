@@ -11,8 +11,8 @@ const items = [];
 let hideCheckedItems = false;
 
 const findById = function(id) {
-  console.log(items)
-  return store.items.find(item => item.id === id); //why does this still reference store? It's undefined.
+  // console.log(items.find(item => item.id === id));
+  return items.find(item => item.id === id); //why does this still reference store? It's undefined.
 };
 
 const addItem = function(name) {
@@ -28,7 +28,8 @@ const addItem = function(name) {
 const findAndToggleChecked = function(id) {
   const result = findById(id);
   // toggle it's checked attribute?
-  this.item.result.checked = !this.item.result.checked;
+  // this.item.result.checked = !this.item.result.checked;
+  result.checked = !result.checked; //I had to remove this.item so that the checked property of the returned object could be toggled
 };
 
 const findAndUpdateName = function(id, newName) {
@@ -47,8 +48,8 @@ const findAndDelete = function(id) {
   this.items.splice(id, 1);
 };
 
-const toggleCheckedFilter = function(ids) {
-  ids.checked = !ids.checked; // I don't think this is right yet
+const toggleCheckedFilter = function() { // this is the last piece of the puzzle
+  store.hideCheckedItems = !store.hideCheckedItems
 }
 
 export default {

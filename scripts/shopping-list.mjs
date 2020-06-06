@@ -33,7 +33,10 @@ const generateShoppingItemsString = function (shoppingList) {
 const render = function () {
   // Filter item list if store prop is true by item.checked === false
   let items = [...store.items];
-  if (store.hideCheckedItems) {
+  console.log(store.hideCheckedItems)
+  if (store.hideCheckedItems === true) {
+    console.log(`store.hideCheckedItems ${store.hideCheckedItems}`)
+    console.log(`items`,items)
     items = items.filter(item => !item.checked);
   }
   // render the shopping list in the DOM
@@ -116,7 +119,7 @@ const handleDeleteItemClicked = function () {
  */
 // const toggleCheckedItemsFilter = function () {
 //   store.hideCheckedItems = !store.hideCheckedItems;
-// };
+// }; // This was moved to store.js
 
 /**
  * Places an event listener on the checkbox
@@ -124,7 +127,8 @@ const handleDeleteItemClicked = function () {
  */
 const handleToggleFilterClick = function () {
   $('.js-filter-checked').click(() => {
-    store.toggleCheckedFilter(); //this is calling the functin above that we were supposed to remove
+    store.hideCheckedItems = !store.hideCheckedItems
+    //store.toggleCheckedFilter();
     render();
   });
 };
