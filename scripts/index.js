@@ -1,7 +1,7 @@
 import store from './store.js';
 import item from './item.js';
 import shoppingList from './shopping-list.js';
-
+// test change
 const main = function () {
   const itemNames = [ '', 'apples', 'pears' ];
   itemNames.forEach(name => {
