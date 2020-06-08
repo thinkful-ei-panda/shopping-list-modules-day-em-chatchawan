@@ -55,6 +55,10 @@ const findAndDelete = function(id) {
   items.splice(index, 1);
 };
 
+const toggleCheckedFilter  = function() {
+  this.hideCheckedItems = !this.hideCheckedItems;
+}
+
 export default {
   items,
   hideCheckedItems,
@@ -62,5 +66,6 @@ export default {
   addItem,
   findAndToggleChecked,
   findAndUpdateName,
-  findAndDelete
+  findAndDelete,
+  toggleCheckedFilter
 };
